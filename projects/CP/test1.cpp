@@ -8,7 +8,6 @@ int main()
 
     return 0;
 }
-
 struct TreeNode
 {
     int val;
@@ -22,7 +21,17 @@ struct TreeNode
 class Solution
 {
 public:
-    bool isSymmetric(TreeNode *root)
+    int maxDepth(TreeNode *root)
     {
+
+        if (!root)
+        {
+            return 0;
+        }
+
+        int leftdepth = maxDepth(root->left);
+        int rightdepth = maxDepth(root->right);
+
+        return 1 + max(leftdepth, rightdepth);
     }
 };
