@@ -1,23 +1,24 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution(object):
-    def flatten(self, root):
-        def dfs(root):
-          if not root:
-            return None
-          leftTail=dfs(root.left)
-          rightTail=dfs(root.right)
+def cycle_length(n):
+    remainders = {}
+    remainder = 1 % n
+    position = 0
 
-          if root.left:
-             leftTail.next=root.right
-             root.right=root.left
-             root.left=None
+    while remainder != 0 and remainder not in remainders:
+        remainders[remainder] = position
+        remainder = (remainder * 10) % n
+        position += 1
 
-          last=rightTail or leftTail or root
-          return last
-         dfs(root)
-        
+    if remainder == 0:
+        return 0  # terminates, no cycle
+    else:
+        return position - remainders[remainder]
+
+max_len = 0
+max_d = 1
+for d in range(2, 1000):
+    val = cycle_length(d)
+    if val > max_len:
+        max_len = val
+        max_d = d
+
+print(max_d)
