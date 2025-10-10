@@ -1,24 +1,28 @@
-def cycle_length(n):
-    remainders = {}
-    remainder = 1 % n
-    position = 0
+def isPrime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-    while remainder != 0 and remainder not in remainders:
-        remainders[remainder] = position
-        remainder = (remainder * 10) % n
-        position += 1
 
-    if remainder == 0:
-        return 0  # terminates, no cycle
-    else:
-        return position - remainders[remainder]
+max_primes = 0
+product = 0
 
-max_len = 0
-max_d = 1
-for d in range(2, 1000):
-    val = cycle_length(d)
-    if val > max_len:
-        max_len = val
-        max_d = d
+for a in range(-999, 1000):
+    for b in range(-1000, 1001):
+        n = 0
+        while True:
+            val = n**2 + a*n + b
+            if not isPrime(val):
+                break
+            n += 1
 
-print(max_d)
+        if n > max_primes:
+            max_primes = n
+            product = a * b
+
+print(product)
+
+
