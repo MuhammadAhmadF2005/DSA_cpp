@@ -9,30 +9,32 @@ class Solution
 public:
     bool isValid(string s)
     {
-        std::stack<char> stack;
-        std::unordered_map<char, char> closeToOpen = {
-            {')', '('},
-            {']', '['},
-            {'}', '{'}};
+        stack<char> st;
 
         for (char c : s)
         {
-            if (closeToOpen.count(c))
+            if (c == '(' or '{' or '[')
             {
-                if (!stack.empty() && stack.top() == closeToOpen[c])
+                st.push(c);
+            }
+            else
+            {
+                if (st.empty())
                 {
-                    stack.pop();
+                    return false;
                 }
-                else
+                char top = st.top();
+                st.pop();
+
+                if ((c == ')' && top != '(') ||
+                    (c == ']' && top != '[') ||
+                    (c == '}' && top != '{'))
                 {
                     return false;
                 }
             }
-            else
-            {
-                stack.push(c);
-            }
         }
-        return stack.empty();
+
+        return s.empty();
     }
 };
