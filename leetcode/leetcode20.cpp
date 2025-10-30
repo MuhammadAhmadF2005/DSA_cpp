@@ -1,7 +1,4 @@
 #include <bits/stdc++.h>
-#define ll long long
-#define vi vector<int>
-#define vll vector<long long>
 using namespace std;
 
 class Solution
@@ -13,18 +10,16 @@ public:
 
         for (char c : s)
         {
-            if (c == '(' or '{' or '[')
+            if (c == '(' || c == '{' || c == '[')
             {
                 st.push(c);
             }
             else
             {
                 if (st.empty())
-                {
                     return false;
-                }
+
                 char top = st.top();
-                st.pop();
 
                 if ((c == ')' && top != '(') ||
                     (c == ']' && top != '[') ||
@@ -32,9 +27,10 @@ public:
                 {
                     return false;
                 }
+                st.pop();
             }
         }
 
-        return s.empty();
+        return st.empty();
     }
 };
