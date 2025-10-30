@@ -35,7 +35,7 @@ public:
         {
             curr = curr->next;
         }
-        ListNode *first;
+        ListNode *first = curr;
 
         curr = head;
         for (int i = 0; i < back; i++)
@@ -47,5 +47,7 @@ public:
         int temp = first->val;
         first->val = second->val;
         second->val = temp;
+
+        return head;
     }
 };
