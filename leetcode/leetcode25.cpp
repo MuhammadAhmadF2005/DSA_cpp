@@ -63,7 +63,7 @@ public:
 
             prevGroupEnd->next = newHead; // connect previous group to new head
             groupHead->next = check;      // connect end of reversed group to next segment
-
+           
             // Move pointers forward for next group
             prevGroupEnd = groupHead;
             curr = check;
