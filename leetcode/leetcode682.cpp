@@ -47,11 +47,3 @@ public:
         return total;
     }
 };
-
-int main()
-{
-    Solution s;
-    vector<string> ops = {"5", "2", "C", "D", "+"};
-    cout << s.calPoints(ops); // Output: 30
-    return 0;
-}
