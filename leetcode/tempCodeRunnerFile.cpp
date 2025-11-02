@@ -3,41 +3,37 @@
 #define vi vector<int>
 #define vll vector<long long>
 using namespace std;
-int main()
-{
 
-    return 0;
-}
 class Solution
 {
 public:
-    vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
+    bool isHappy(int n)
     {
-        unordered_map<int, int> next;
-        stack<int> st;
-
-        for (int num : nums2)
+        vector<int> digits;
+        int sum = 0;
+        while (n > 0)
         {
-            while (!st.empty() and st.top() < num)
-            {
-                next[st.top()] = num;
-                st.pop();
-            }
-            st.push(num);
+            int digit = n % 10;
+            digits.push_back(digit);
+            n /= 10;
         }
 
-        while (!st.empty())
+        for (int digit : digits)
         {
-            next[st.top()] = -1;
-            st.pop();
+            sum += digit * digit;
         }
 
-        vector<int> result;
-        for (int num : nums1)
+        if (sum == 1)
         {
-            result.push_back(next[num]);
+            return true;
         }
-
-        return result;
+        return false;
     }
 };
+
+int main()
+{
+    Solution s;
+    s.isHappy(10);
+    return 0;
+}
