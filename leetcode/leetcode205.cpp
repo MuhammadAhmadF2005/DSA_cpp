@@ -43,9 +43,9 @@ public:
 
             // check other way around asw//
 
-            if (mapST.count(c2))
+            if (mapTS.count(c2))
             {
-                if (mapST[c2] != c1)
+                if (mapTS[c2] != c1)
                 {
                     return false;
                 }
@@ -53,7 +53,7 @@ public:
 
             else
             {
-                mapST[c2] = c1;
+                mapTS[c2] = c1;
             }
         }
 
