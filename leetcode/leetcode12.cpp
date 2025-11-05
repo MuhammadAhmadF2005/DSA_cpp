@@ -33,7 +33,7 @@ public:
         for (auto &pair : values)
         {
             while (num >= pair.first)
-            {
+            {K
                 result += pair.second;
                 num -= pair.first;
             }
