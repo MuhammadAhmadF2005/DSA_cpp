@@ -20,6 +20,11 @@ public:
     vector<string> binaryTreePaths(TreeNode *root)
     {
         vector<string> res;
+        if (!root)
+            return res;
+
+        dfs(root, "", res);
+        return res;
     }
 
     void dfs(TreeNode *node, string path, vector<string> &res)
