@@ -19,11 +19,11 @@ class Solution
 public:
     int countNodes(TreeNode *root)
     {
-        TreeNode *left = nullptr;
-        TreeNode *right = nullptr;
-        int num = 0;
-        countNodes(TreeNode * left);
-        num++;
-        countNodes(TreeNode * right);
+        if (!root)
+        {
+            return 0;
+        }
+
+        return 1 + countNodes(root->left) + countNodes(root->right);
     }
 };
