@@ -17,7 +17,7 @@ struct TreeNode
 class Solution
 {
 public:
-    int minDiff = 0;
+    int minDiff = INT_MAX;
     int prev = -1; // previous node
 
     void inorder(TreeNode *node)
