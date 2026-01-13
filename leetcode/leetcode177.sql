@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION NthHighestSalary(N INT) RETURNS TABLE (Salary INT) AS $$
+BEGIN
+  RETURN QUERY (
+    SELECT DISTINCT e.salary
+    from EMployees e
+    order by salary DESC
+    OFFSET N - 1 LIMIT 1
+    
+  );
+END;
+$$ LANGUAGE plpgsql;
