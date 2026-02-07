@@ -1,7 +1,3 @@
-# Project Euler Problem 30
-# Sum of all numbers that can be written as the sum of fifth powers of their digits
-
-# Precompute fifth powers of digits 0–9
 digit_powers = [d**5 for d in range(10)]
 
 # Upper bound: 6 * 9^5 = 354294
