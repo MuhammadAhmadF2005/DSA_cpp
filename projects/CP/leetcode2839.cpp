@@ -9,19 +9,18 @@ class Solution
 public:
     bool canBeEqual(string s1, string s2)
     {
-        bool flag = false;
-        for (int i = 0; i < 4; i++)
+        // Check even positions (0 and 2)
+        if (!((s1[0] == s2[0] && s1[2] == s2[2]) || (s1[0] == s2[2] && s1[2] == s2[0])))
         {
-            for (int j = i + 0; j < 4; j++)
-            {
-                swap(s1[i], s2[j]);
-
-                if (s1 == s2)
-                {
-                    flag = true;
-                }
-            }
+            return false;
         }
-        return flag;
+
+        // Check odd positions (1 and 3)
+        if (!((s1[1] == s2[1] && s1[3] == s2[3]) || (s1[1] == s2[3] && s1[3] == s2[1])))
+        {
+            return false;
+        }
+
+        return true;
     }
 };
